@@ -2,36 +2,57 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Tech Screen</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-  <style>
-    body { background-color: #FFFFFF; }
-    h1 { 
-      font-family: Lato; 
-      font-size:  200%;
-     }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tech Screen</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #FFFFFF;
+        }
+        
+        h1 {
+            font-family: Lato;
+            font-size: 200%;
+        }
+    </style>
 </head>
 
 <body>
-  <img src="https://www.att.com/ecms/dam/att/consumer/global/logos/att_globe_500x500.jpg" style="width:200px;" > 
-  <h1>Tech Screen </h1>
-  <form method="post" action="/item/add">
-    <label for="name">Input</label>
-    <input type="text" name="name">
-    <input type="submit" value="Add">
-  </form>
-  <h4>Items:</h4>
-  <ul>
-    <% items.forEach(function(item) { %>
-      <li>
-        <%= item.name %>
-      </li>
-      <% }); %>
-  </ul>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #2769AA">
+        <!-- https://www.att.com/ecms/dam/att/consumer/global/logos/att_globe_500x500.jpg -->
+        <img src="assets/icon-interview.png" width="60" height="60">
+        <a class="navbar-brand ml-1" href="/" style="font-weight: 600; font-size: 24px; color: #fff">Tech Screen </a>
+    </nav>
+    <!-- <h1>Tech Screen </h1> -->
+    <div class="container">
+        <form method="post" action="/item/add">
+            <div class="row p-4">
+                <label class="col-sm-2" for="name">Input</label>
+                <input type="text" placeholder="Enter Name" class="form-control col-sm-5" name="name">
+                <button type="submit" class="btn btn-primary col-sm-1 offset-sm-1">Add</button>
+            </div>
+        </form>
+        <div class="row p-4">
+            <h4>Items:</h4>
+            <table class="table table-bordered table-striped table-hover">
+                <tbody>
+                    <% items.forEach(function(item, i) { %>
+                        <tr data-index="<%= i %>">
+                            <td class="text-center">
+                                <%= i+1 %>
+                            </td>
+                            <td class="text-center">
+                                <%= item.name %>
+                            </td>
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 
 </html>
